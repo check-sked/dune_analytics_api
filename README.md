@@ -32,8 +32,8 @@ INSERT
 
 ## Questions?
 
-Got questions? Reach me through one of the following channels:
+Got questions? Reach me through the following channels:
 
-GitHub: [@zapokorny](https://api.github.com/users/zapokorny)
+GitHub: [@check-sked](https://api.github.com/users/check-sked)
 
-Email: zwpokorny@gmail.com
+Twitter: [@Check-Sked](https://twitter.com/Check_Sked)
