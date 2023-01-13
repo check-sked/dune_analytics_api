@@ -11,6 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.2",
-    "inquirer": "^6.3.1"
+    "csv": "^6.2.5",
+    "csv-writer": "^1.6.0",
+    "inquirer": "^6.3.1",
+    "writer": "^1.0.0"
   }
 }
