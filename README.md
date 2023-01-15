@@ -1,4 +1,4 @@
-# Dune-Analytics-API
+# dune-analytics-API
 
 ![my_image](./assets/Dune.jpeg)
 
