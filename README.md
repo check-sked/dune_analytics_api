@@ -1,5 +1,7 @@
 # Dune-Analytics-API
 
+![my_image](./assets/Dune.jpeg)
+
 ## Description
 
 The Dune-Analytics-API is a command line tool to execute Dune Analytics queries.
