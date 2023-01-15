@@ -4,7 +4,7 @@
 
 ## Description
 
-The Dune-Analytics-API is a command line tool to execute Dune Analytics queries.
+The Dune-Analytics-API is a tool to execute Dune Analytics queries.
 
 ## Table of Contents
 
