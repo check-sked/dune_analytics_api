@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Command-line application that uses input from a user to dynamically generate a README for a GitHub project.",
   "main": "api.js",
+  "module": "main.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,8 +14,18 @@
     "axios": "^0.21.2",
     "csv": "^6.2.5",
     "csv-writer": "^1.6.0",
+    "esm": "^3.2.25",
     "inquirer": "^6.3.1",
     "node-fetch": "^3.3.0",
     "writer": "^1.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/check-sked/Dune-Analytics-API.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/check-sked/Dune-Analytics-API/issues"
+  },
+  "homepage": "https://github.com/check-sked/Dune-Analytics-API#readme"
 }
