@@ -9,9 +9,13 @@
 
 <a href="https://dune.com/home"><img src="./assets/Dune.jpeg" width="200"></a>
 
+---
+
 ## Description
 
 The Dune-Analytics-API is a tool to execute Dune Analytics queries and export the data to a manipulatable format. This makes visualizing and pairing the data with other information more simple.
+
+---
 
 ## Installation
 
@@ -23,6 +27,8 @@ After cloning the **dune-analytics-API** repository to your machine, run `npm i`
 - [csv](https://www.npmjs.com/package/csv)
 - [csv-writer](https://www.npmjs.com/package/csv-writer)
 - [node-fetch](https://www.npmjs.com/package/node-fetch)
+
+---
 
 ## Usage
 
