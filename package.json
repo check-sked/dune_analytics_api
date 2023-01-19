@@ -11,11 +11,9 @@
   "author": "Check_Sked",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.2",
     "csv": "^6.2.5",
     "csv-writer": "^1.6.0",
     "esm": "^3.2.25",
-    "inquirer": "^6.3.1",
     "node-fetch": "^3.3.0",
     "writer": "^1.0.0"
   },
