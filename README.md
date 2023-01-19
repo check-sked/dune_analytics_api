@@ -1,5 +1,7 @@
 # dune-analytics-API
 
+![License](https://img.shields.io/badge/license-ISC-blue.svg)
+
 ## Table of Contents
 
 - [Description](#description)
