@@ -23,7 +23,7 @@ The Dune-Analytics-API is a tool to execute Dune Analytics queries and export th
 
 _Instructions for installation project and setting up the development environment:_
 
-After cloning the **dune-analytics-API** repository to your machine, run `npm i` in the root of the project's directory. This will install all of the necessary dependencies needed to use the tool. The dependencies used include:
+After cloning and opening the **dune-analytics-API** repository, run `npm i` in the root of the project's directory. The dependencies used include:
 
 - [esm](https://www.npmjs.com/package/esm)
 - [csv](https://www.npmjs.com/package/csv)
@@ -36,9 +36,9 @@ After cloning the **dune-analytics-API** repository to your machine, run `npm i`
 
 _How to use the application:_
 
-To use the tool, open the project in the command line and run: `node api.js {Dune Query ID}`.
+`node api.js {Dune Query ID}`.
 
-For example, to run Dune Analytics Query `1258228`, you would type `node api.js 1258228` in your terminal and **press enter**.
+For example, enter `node api.js 1258228` to run Dune Analytics Query `1258228`.
 
 ---
 
