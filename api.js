@@ -1,4 +1,4 @@
-import { createObjectCsvWriter } from "csv-writer";
+import { createObjectCsvWriter } from "csv-writer"; // Import csv-writer to create CSV file
 
 export {};
 const queryID = process.argv[2]; // Example Query ID: 1258228
@@ -20,34 +20,38 @@ var params = {
 };
 var body = JSON.stringify(params); // Convert params to a string
 
-//  Fetch Dune API for Execution Id
-try {
-  const response = await fetch(
-    `https://api.dune.com/api/v1/query/${queryID}/execute`,
-    {
-      method: "POST",
-      headers: header,
-      body: body, // Parameters passed here. Comment out if not needed.
+async function main() {
+  //  Fetch Dune API for Execution Id
+  try {
+    const response = await fetch(
+      `https://api.dune.com/api/v1/query/${queryID}/execute`,
+      {
+        method: "POST",
+        headers: header,
+        body: body, // Parameters passed here. Comment out if not needed.
+      }
+    );
+    if (!response.ok) {
+      throw new Error(response.statusText);
     }
-  );
-  if (!response.ok) {
-    throw new Error(response.statusText);
+    const response_object = await response.text();
+    console.log(response_object);
+
+    // Write requested data to a CSV file
+    const csvWriter = createObjectCsvWriter({
+      path: `dune_query_${queryID}.csv`,
+      header: ["response"],
+    });
+
+    const records = [{ response: response_object }];
+
+    csvWriter.writeRecords(records).then(() => {
+      // Notify if CSV was successfully created
+      console.log(`Data written to dune_query_${queryID}.csv!`);
+    });
+  } catch (error) {
+    console.error("Error:", error);
   }
-  const response_object = await response.text();
-  console.log(response_object);
-
-  // Write requested data to a CSV file
-  const csvWriter = createObjectCsvWriter({
-    path: "dune_query_${queryID}.csv",
-    header: ["response"],
-  });
-
-  const records = [{ response: response_object }];
-
-  csvWriter.writeRecords(records).then(() => {
-    // Notify if CSV was successfully created
-    console.log("Data written to dune_query_${queryID}.csv!");
-  });
-} catch (error) {
-  console.error("Error:", error);
 }
+
+main();
