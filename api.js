@@ -6,7 +6,7 @@ import fs from "fs";
 
 // Add the API key to an header object
 const meta = {
-  "x-dune-api-key": "18SrYlEgF1XfFiJxfUqZDz7ZfQRjNZly",
+  "x-dune-api-key": "[INSERT_YOUR_API_KEY]",
 };
 const header = new Headers(meta);
 
