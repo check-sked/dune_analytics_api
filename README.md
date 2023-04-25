@@ -29,6 +29,7 @@ After cloning and opening the **dune-analytics-API** repository, run `npm i` in 
 - [csv](https://www.npmjs.com/package/csv)
 - [csv-writer](https://www.npmjs.com/package/csv-writer)
 - [node-fetch](https://www.npmjs.com/package/node-fetch)
+- [write](https://www.npmjs.com/package/write)
 
 ---
 
