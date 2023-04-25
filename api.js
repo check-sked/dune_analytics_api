@@ -1,57 +1,73 @@
-import { createObjectCsvWriter } from "csv-writer"; // Import csv-writer to create CSV file
-
-export {};
 const queryID = process.argv[2]; // Example Query ID: 1258228
 console.log(queryID); // Check that Query ID is passing through
 import { Headers } from "node-fetch";
 import fetch from "node-fetch";
+import fs from "fs";
 
-// Insert API Key here
+// Add the API key to an header object
 const meta = {
-  "x-dune-api-key": "YOUR_API_KEY",
+  "x-dune-api-key": "18SrYlEgF1XfFiJxfUqZDz7ZfQRjNZly",
 };
 const header = new Headers(meta);
 
-// Example of adding parameters we would pass to the query. Comment out if not needed.
-var params = {
-  query_parameters: {
-    wallet_address: "YOUR_WALLET_ADDRESS",
-  },
-};
-var body = JSON.stringify(params); // Convert params to a string
-
-async function main() {
-  //  Fetch Dune API for Execution Id
-  try {
-    const response = await fetch(
-      `https://api.dune.com/api/v1/query/${queryID}/execute`,
-      {
-        method: "POST",
-        headers: header,
-        body: body, // Parameters passed here. Comment out if not needed.
-      }
-    );
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    const response_object = await response.text();
-    console.log(response_object);
-
-    // Write requested data to a CSV file
-    const csvWriter = createObjectCsvWriter({
-      path: `dune_query_${queryID}.csv`,
-      header: ["response"],
-    });
-
-    const records = [{ response: response_object }];
-
-    csvWriter.writeRecords(records).then(() => {
-      // Notify if CSV was successfully created
-      console.log(`Data written to dune_query_${queryID}.csv!`);
-    });
-  } catch (error) {
-    console.error("Error:", error);
-  }
+// Delay function
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-main();
+// Async function to fetch query data and loop until completed
+async function fetchQueryData(queryID) {
+  // Execute the query and get the execution_id
+  const executionResponse = await fetch(
+    `https://api.dune.com/api/v1/query/${queryID}/execute`,
+    {
+      method: "POST",
+      headers: header,
+    }
+  );
+  const executionData = await executionResponse.json();
+  const executionID = executionData.execution_id;
+
+  let isCompleted = false;
+
+  while (!isCompleted) {
+    // Check the query execution status using the execution_id
+    const statusResponse = await fetch(
+      `https://api.dune.com/api/v1/execution/${executionID}/status`,
+      {
+        method: "GET",
+        headers: header,
+      }
+    );
+    const statusData = await statusResponse.json();
+
+    console.log(statusData);
+
+    if (statusData.state === "QUERY_STATE_COMPLETED") {
+      isCompleted = true;
+    } else {
+      await delay(5000); // Wait for 5 seconds before trying again
+    }
+  }
+
+  // Fetch the query results in CSV format
+  const resultsResponse = await fetch(
+    `https://api.dune.com/api/v1/execution/${executionID}/results/csv`,
+    {
+      method: "GET",
+      headers: header,
+    }
+  );
+  const resultsData = await resultsResponse.text();
+
+  // Save the CSV data to a file
+  fs.writeFile("results.csv", resultsData, (err) => {
+    if (err) {
+      console.error("Error writing the CSV file:", err);
+    } else {
+      console.log("CSV file has been saved as results.csv");
+    }
+  });
+}
+
+fetchQueryData(queryID);
