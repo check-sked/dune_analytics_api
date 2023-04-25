@@ -61,11 +61,12 @@ async function fetchQueryData(queryID) {
   const resultsData = await resultsResponse.text();
 
   // Save the CSV data to a file
-  fs.writeFile("results.csv", resultsData, (err) => {
+  const fileName = `results_${queryID}.csv`;
+  fs.writeFile(fileName, resultsData, (err) => {
     if (err) {
-      console.error("Error writing the CSV file:", err);
+      console.error(`Error writing the CSV file: ${fileName}`, err);
     } else {
-      console.log("CSV file has been saved as results.csv");
+      console.log(`CSV file has been saved as ${fileName}`);
     }
   });
 }
