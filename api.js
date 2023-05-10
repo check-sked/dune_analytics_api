@@ -4,7 +4,7 @@ import fs from "fs";
 
 // Get the query ID from the command line arguments
 const queryID = process.argv[2]; // Example Query ID: 1258228
-console.log(queryID); // Check that Query ID is passing through
+console.log("retrieving data for query " + queryID + "..."); // Check that Query ID is passing through
 
 // Add the API key to header object
 const meta = {
