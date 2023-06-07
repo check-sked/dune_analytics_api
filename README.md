@@ -7,6 +7,7 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Python](#python)
 - [Have-Questions-or-Want-to-Conntect?](#questions)
 
 <a href="https://dune.com/home"><img src="./assets/Dune.jpeg" width="200"></a>
@@ -40,6 +41,12 @@ _How to use the application:_
 `node api.js {Dune Query ID}`.
 
 For example, enter `node api.js 1258228` to run Dune Analytics Query `1258228`.
+
+---
+
+## Python
+
+Reference [here](https://github.com/check-sked/crypto_data_resources/tree/main/dune_analytics) to use the Dune API via Python.
 
 ---
 
