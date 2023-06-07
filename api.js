@@ -39,9 +39,10 @@ async function fetchQueryData(queryID) {
 
     let isCompleted = false;
     let attempts = 0;
+    const timeout = Date.now() + 5 * 60 * 1000; // 5 minutes timeout
 
     // Loop until the query is completed or the maximum number of attempts is reached
-    while (!isCompleted && attempts < 5) {
+    while (!isCompleted && Date.now() < timeout) {
       // Check the query execution status using the execution_id
       const statusResponse = await fetch(
         `https://api.dune.com/api/v1/execution/${executionID}/status`,
@@ -69,7 +70,7 @@ async function fetchQueryData(queryID) {
       }
     }
 
-    // Throw an error if the query is not completed after multiple attempts
+    // Throw an error if the query is not completed within the timeout
     if (!isCompleted) {
       throw new Error("Unable to fetch query results after multiple attempts");
     }
