@@ -39,7 +39,7 @@ async function fetchQueryData(queryID) {
 
     let isCompleted = false;
     let attempts = 0;
-    const timeout = Date.now() + 5 * 60 * 1000; // 5 minutes timeout
+    const timeout = Date.now() + 10 * 60 * 1000; // 5 minutes timeout
 
     // Loop until the query is completed or the maximum number of attempts is reached
     while (!isCompleted && Date.now() < timeout) {
